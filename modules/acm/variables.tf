@@ -92,3 +92,26 @@ variable "skip_gcloud_download" {
   type        = bool
   default     = true
 }
+
+variable "source_format" {
+  description = "Configures a non-hierarchical repo if set to 'unstructured'. Uses [ACM defaults](https://cloud.google.com/anthos-config-management/docs/how-to/installing#configuring-config-management-operator) when unset."
+  type        = string
+  default     = ""
+}
+
+variable "hierarchy_controller" {
+  description = "Configurations for Hierarchy Controller. See [Hierarchy Controller docs](https://cloud.google.com/anthos-config-management/docs/how-to/installing-hierarchy-controller) for more details"
+  type        = map
+  default     = null
+}
+
+variable "enable_log_denies" {
+  description = "Whether to enable logging of all denies and dryrun failures for ACM Policy Controller."
+  type        = bool
+  default     = false
+}
+
+variable "service_account_key_file" {
+  description = "Path to service account key file to auth as for running `gcloud container clusters get-credentials`."
+  default     = ""
+}

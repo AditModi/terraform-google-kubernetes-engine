@@ -8,7 +8,7 @@ The resources/services/activations/deletions that this module will create/trigge
 - Activate network policy if `network_policy` is true
 - Add `ip-masq-agent` configmap with provided `non_masquerade_cidrs` if `configure_ip_masq` is true
 
-Sub modules are provided from creating private clusters, beta private clusters, and beta public clusters as well.  Beta sub modules allow for the use of various GKE beta features. See the modules directory for the various sub modules.
+Sub modules are provided for creating private clusters, beta private clusters, and beta public clusters as well.  Beta sub modules allow for the use of various GKE beta features. See the modules directory for the various sub modules.
 
 ## Compatibility
 
@@ -18,7 +18,7 @@ This module is meant for use with Terraform 0.12. If you haven't
 intended for Terraform 0.11.x is [3.0.0].
 
 ## Usage
-There are multiple examples included in the [examples](./examples/) folder but simple usage is as follows:
+There are multiple examples included in the [examples](https://github.com/terraform-google-modules/terraform-google-kubernetes-engine/examples/) folder but simple usage is as follows:
 
 ```hcl
 module "gke" {
@@ -130,6 +130,7 @@ Then perform the following commands on the root folder:
 | database\_encryption | Application-layer Secrets Encryption settings. The object format is {state = string, key_name = string}. Valid values of state are: "ENCRYPTED"; "DECRYPTED". key_name is the name of a CloudKMS key. | object | `<list>` | no |
 | default\_max\_pods\_per\_node | The maximum number of pods to schedule per node | string | `"110"` | no |
 | description | The description of the cluster | string | `""` | no |
+| disable\_default\_snat | Whether to disable the default SNAT to support the private use of public IP addresses | bool | `"false"` | no |
 | disable\_legacy\_metadata\_endpoints | Disable the /0.1/ and /v1beta1/ metadata server endpoints on the node. Changing this value will cause all node pools to be recreated. | bool | `"true"` | no |
 | dns\_cache | (Beta) The status of the NodeLocal DNSCache addon. | bool | `"false"` | no |
 | enable\_binary\_authorization | Enable BinAuthZ Admission controller | string | `"false"` | no |
